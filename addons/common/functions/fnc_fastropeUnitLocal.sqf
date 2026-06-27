@@ -10,7 +10,7 @@ _unit setPosASL (getPosASL _hook vectorAdd [0,0,-2]);
 _unit setDir random 360;
 //if (!isPlayer _unit) then {_unit setDir random 360};
 
-_unit switchMove QPVAR(fastrope);
+[QGVAR(fastropeAnim),[_unit,QPVAR(fastrope)]] call CBA_fnc_globalEvent;
 
 // mod compat
 if (!isNil "WMO_noRoadway") then {WMO_noRoadway pushBack _vehicle};
@@ -21,7 +21,7 @@ private _endHeight = getPosASL _hook # 2 - _length - 0.3;
 private _fnc_reset = {
 	params ["_unit","_vehicle"];
 
-	_unit switchMove "";
+	[QGVAR(fastropeAnim),[_unit,""]] call CBA_fnc_globalEvent;
 	_unit setVectorUp [0,0,1];
 	_unit setVariable [QPVAR(fastroping),nil,true];
 	

@@ -197,6 +197,10 @@ if (isServer) then {
 
 {_this getVariable [QPVAR(fastroping),false]} call emr_fnc_addWalkableSurfaceExitCondition; // mod compat
 [QGVAR(fastroping),FUNC(fastropeUnitLocal)] call CBA_fnc_addEventHandler;
+[QGVAR(fastropeAnim),{
+	params ["_unit","_anim"];
+	_unit switchMove _anim;
+}] call CBA_fnc_addEventHandler;
 [QGVAR(fastropingDone),{
 	params ["_unit","_vehicle"];
 	_vehicle setVariable [QPVAR(fastropeUnits),(_vehicle getVariable [QPVAR(fastropeUnits),[]]) - [_unit],true];
